@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wife</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <style>
+    body {
+      overflow: hidden;
+      background: #E6E6FA;
+    }
+
+    .drop {
+      position: absolute;
+      top: -20px;
+      color: #ff4d6d;
+      animation: fall linear infinite;
+      opacity: .8;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(110vh);
+      }
+    }
+  </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen relative">
+
+<!-- Rain -->
+<div id="rain"></div>
+
+<!-- Content -->
+<div class="flex flex-col items-center justify-center gap-8 text-center">
+
+  <h1 class="text-3xl sm:text-5xl font-bold text-pink-500 flex items-center justify-center gap-3">
+    <span>Yurakchani bos janim</span>
+    <i class="fa-solid fa-heart text-red-500 animate-pulse"></i>
+  </h1>
+  <button
+    onclick="goPage()"
+    class="w-20 h-20 sm:w-24 sm:h-24
+    bg-white rounded-full shadow-xl
+    flex items-center justify-center
+    hover:scale-110 active:scale-95 transition duration-300">
+
+    <i class="fa-solid fa-heart text-pink-500 text-5xl"></i>
+
+  </button>
+
+</div>
+
+<script>
+function createDrop() {
+
+  const drop = document.createElement("div");
+  drop.className = "drop";
+
+  drop.innerHTML = '<i class="fa-solid fa-heart"></i>';
+
+  drop.style.left = Math.random() * 100 + "vw";
+  drop.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  drop.style.fontSize = (Math.random() * 18 + 12) + "px";
+
+  document.body.appendChild(drop);
+
+  setTimeout(() => {
+    drop.remove();
+  }, 5000);
+}
+
+setInterval(createDrop, 200);
+
+function goPage() {
+  window.location.href = "page2.html";
+}
+</script>
+
+</body>
+</html>
